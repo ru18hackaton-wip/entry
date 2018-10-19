@@ -1,6 +1,7 @@
+from .robot import Robot
+
 import py_trees
 import time
-from ev3dev2.led import Leds
 
 def create_tree():
     root = py_trees.composites.Selector("root")
@@ -13,14 +14,12 @@ def create_tree():
     return root
 
 def main():
-    print("foobarbaz")
 
     node = py_trees.composites.Selector("Random node")
     print(str(node))
 
-    leds = Leds()
-    leds.set_color("LEFT", "GREEN")
-    print("Green!")
+    robot = Robot()
+    robot.xmas()
 
     tree = create_tree()
     tree.setup(timeout=15)
