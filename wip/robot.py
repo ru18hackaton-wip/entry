@@ -5,16 +5,6 @@ class Robot:
     def __init__(self):
         self.leds = Leds()
 
-    def xmas(self):
-        self.leds.set_color("LEFT", "GREEN")
-        self.leds.set_color("RIGHT", "RED")
-        self.leds.set_color("LEFT", "RED")
-        self.leds.set_color("LEFT", "YELLOW")
-        self.leds.set_color("RIGHT", "YELLOW")
-        self.leds.set_color("RIGHT", "GREEN")
-        self.leds.set_color("LEFT", "GREEN")
-        self.leds.set_color("RIGHT", "RED")
-        self.leds.set_color("LEFT", "RED")
-        self.leds.set_color("LEFT", "YELLOW")
-        self.leds.set_color("RIGHT", "YELLOW")
-        self.leds.set_color("RIGHT", "GREEN")
+    def set_leds(self, color):
+        self.leds.set_color("LEFT", color)
+        self.leds.set_color("RIGHT", color)

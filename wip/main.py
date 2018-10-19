@@ -19,7 +19,7 @@ def main():
     print(str(node))
 
     robot = Robot()
-    robot.xmas()
+    robot.set_leds("GREEN")
 
     tree = create_tree()
     tree.setup(timeout=15)
