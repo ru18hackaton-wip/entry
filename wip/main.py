@@ -11,15 +11,16 @@ def create_tree():
                                                   success_until=4)
     always_running = py_trees.behaviours.Running(name="Running")
     root.add_children([success_after_two, always_running])
-    return root
+    tree = py_trees.trees.BehaviourTree(root)
+    tree.setup(timeout=15)
+    return tree
 
 def main():
     robot = Robot()
     runner = Runner(robot)
 
-    tree = create_tree()
-    tree.setup(timeout=15)
 
+    tree = create_tree()
     runner.set_tree(tree)
 
     runner.run()
