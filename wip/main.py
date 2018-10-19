@@ -1,7 +1,7 @@
 from .robot import Robot
+from .runner import Runner
 
 import py_trees
-import time
 
 def create_tree():
     root = py_trees.composites.Selector("root")
@@ -14,22 +14,12 @@ def create_tree():
     return root
 
 def main():
-
-    node = py_trees.composites.Selector("Random node")
-    print(str(node))
-
     robot = Robot()
-    robot.set_leds("GREEN")
+    runner = Runner(robot)
 
     tree = create_tree()
     tree.setup(timeout=15)
-    for i in range(1, 6):
-        try:
-            print("\n--------- Tick {0} ---------\n".format(i))
-            tree.tick_once()
-            print("\n")
-            py_trees.display.print_ascii_tree(tree, show_status=True)
-            time.sleep(1.0)
-        except KeyboardInterrupt:
-            break
-    print("\n")
+
+    runner.set_tree(tree)
+
+    runner.run()
