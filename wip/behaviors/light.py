@@ -17,7 +17,7 @@ class Color(Behaviour):
         pass
 
     def update(self):
-        if self.target_color == self.robot.get_color():
+        if self.target_color == self.robot.get_color().color_name:
             return Status.SUCCESS
         else:
             return Status.FAILURE

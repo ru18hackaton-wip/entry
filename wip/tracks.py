@@ -38,7 +38,7 @@ def _create_follow_tape_adjust_right_tree(robot):
     return adjust
 
 def create_track01_tree(robot):
-    root = py_trees.composites.Selector("root")
+    root = py_trees.composites.Chooser("root")
     adjust_left = _create_follow_tape_adjust_left_tree(robot)
     adjust_right = _create_follow_tape_adjust_right_tree(robot)
     root.add_children([adjust_left, adjust_right])
