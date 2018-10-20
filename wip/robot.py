@@ -14,11 +14,8 @@ class Robot:
         self.leds.set_color("LEFT", color)
         self.leds.set_color("RIGHT", color)
 
-    def move_forward(self, speed=100):
-        self.tank_drive.on(speed,speed)
-
-    def turn_left(self, speed=100):
-        self.tank_drive.on(0,speed)
+    def move(self, speed_left=100, speed_right=100):
+        self.tank_drive.on(speed_left,speed_right)
 
     def stop(self, brake=True):
         self.tank_drive.off(brake)

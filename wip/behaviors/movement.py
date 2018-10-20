@@ -15,7 +15,7 @@ class Forward(Behaviour):
         pass
 
     def update(self):
-        self.robot.move_forward()
+        self.robot.move()
         return Status.RUNNING
 
     def terminate(self, new_status):
@@ -35,7 +35,27 @@ class TurnLeft(Behaviour):
         pass
 
     def update(self):
-        self.robot.turn_left()
+        self.robot.move(0,100)
+        return Status.RUNNING
+
+    def terminate(self, new_status):
+        self.robot.stop()
+
+class TurnRight(Behaviour):
+
+    def __init__(self, name="TurnRight"):
+        super(TurnRight, self).__init__(name)
+
+    def setup(self, timeout, robot=None):
+        if robot:
+            self.robot = robot
+        return True
+
+    def initialise(self):
+        pass
+
+    def update(self):
+        self.robot.move(100,0)
         return Status.RUNNING
 
     def terminate(self, new_status):
