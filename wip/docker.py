@@ -10,7 +10,7 @@ from populate_arena import populate_arena
 from clean_arena    import clean_arena
 
 import ev3dev2
-from ev3dev2.sensor.lego import InfraredSensor
+from ev3dev2.sensor.lego import UltrasonicSensor
 from ev3dev2.motor import \
     Motor, MediumMotor, LargeMotor, \
     MoveTank, MoveSteering, MoveJoystick, \
@@ -44,5 +44,5 @@ Motor.wait = dummy_wait
 
 def main_docker():
     clean_arena()
-    populate_arena([('large_motor', 0, 'outA'),('large_motor', 1, 'outB')])
+    populate_arena([('large_motor', 0, 'outA'),('large_motor', 1, 'outB'),('ultrasonic_sensor', 0, 'in2')])
     main()

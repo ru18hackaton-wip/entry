@@ -1,18 +1,17 @@
 from .robot import Robot
 from .runner import Runner
 from .behaviors.forward import Forward
+from .behaviors.distance import CloseEnough
 
 import py_trees
 
-def create_tree(robot):
+def create_crash_avoider_tree(robot):
     root = py_trees.composites.Selector("root")
-    success_after_two = py_trees.behaviours.Count(name="After Two",
-                                                  fail_until=2,
-                                                  running_until=2,
-                                                  success_until=4)
-    always_running = Forward()
-    always_running.setup(15, robot)
-    root.add_children([success_after_two, always_running])
+    too_close = CloseEnough()
+    too_close.setup(15, robot, 20)
+    forward = Forward()
+    forward.setup(15, robot)
+    root.add_children([too_close, forward])
     tree = py_trees.trees.BehaviourTree(root)
     tree.setup(timeout=15)
     return tree
@@ -21,8 +20,7 @@ def main():
     robot = Robot()
     runner = Runner(robot)
 
-
-    tree = create_tree(robot)
+    tree = create_crash_avoider_tree(robot)
     runner.set_tree(tree)
 
     runner.run()
