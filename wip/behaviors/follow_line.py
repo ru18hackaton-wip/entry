@@ -20,11 +20,14 @@ class FollowLine(Behaviour):
 
     def update(self):
         if self.target_color == self.robot.get_color().color_name:
-            left, right = self.target_speeds
-            self.robot.move(left,right)
+            if self.status != Status.RUNNING:
+                left, right = self.target_speeds
+                self.robot.move(left,right)
+            return Status.RUNNING
+        elif self.status == Status.RUNNING:
             return Status.SUCCESS
-        else:
-            return Status.FAILURE
+        return Status.FAILURE
 
     def terminate(self, new_status):
-        pass
+        if self.status == Status.RUNNING and new_status != Status.RUNNING:
+            self.robot.stop()
