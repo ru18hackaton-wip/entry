@@ -1,5 +1,5 @@
 from ev3dev2.led import Leds
-from ev3dev2.motor import MoveTank, OUTPUT_A, OUTPUT_B
+from ev3dev2.motor import MoveTank, OUTPUT_A, OUTPUT_B, LargeMotor
 from ev3dev2.sensor.lego import ColorSensor, UltrasonicSensor
 
 class Robot:
@@ -7,7 +7,7 @@ class Robot:
     def __init__(self):
         self.leds = Leds()
         self.tank_drive = MoveTank(OUTPUT_A, OUTPUT_B)
-        self.moving = False
+        self.tank_drive.set_polarity(LargeMotor.POLARITY_INVERSED)
         self.color = ColorSensor()
         self.ultra = UltrasonicSensor()
 
