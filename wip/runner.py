@@ -13,7 +13,9 @@ class Runner:
     def set_tick_rate(self, value):
         self.tick_rate = value
 
-    def set_tree(self, tree):
+    def set_tree(self, root):
+        tree = py_trees.trees.BehaviourTree(root)
+        tree.setup(timeout=15)
         self.tree = tree
 
     def run(self):
