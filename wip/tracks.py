@@ -23,9 +23,9 @@ from .behaviors.follow_line import FollowLine
 def _create_follow_line_tree(robot):
     root = py_trees.composites.Selector("Follow line")
     too_much_left = FollowLine("I see white, turn right")
-    too_much_left.setup(15, robot, "White", [100,50])
+    too_much_left.setup(15, robot, "White", [100,10])
     too_much_right = FollowLine("I see black, turn left")
-    too_much_right.setup(15, robot, "Black", [50,100])
+    too_much_right.setup(15, robot, "Black", [10,100])
     root.add_children([too_much_left, too_much_right])
     return root
 
