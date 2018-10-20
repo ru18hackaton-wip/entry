@@ -9,9 +9,9 @@ class Move(Behaviour):
     def setup(self, timeout, robot=None, speed_left=None, speed_right=None):
         if robot:
             self.robot = robot
-        if speed_left:
+        if speed_left is not None:
             self.speed_left = speed_left
-        if speed_right:
+        if speed_right is not None:
             self.speed_right = speed_right
         return True
 

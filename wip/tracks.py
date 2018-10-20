@@ -3,6 +3,19 @@ from .behaviors.movement import Move
 from .behaviors.distance import CloseEnough
 from .behaviors.light import Color
 
+def create_crash_avoider_tree(robot):
+    root = py_trees.composites.Selector("root")
+    avoid = py_trees.composites.Parallel("Avoid obstacle")
+    too_close = CloseEnough()
+    too_close.setup(15, robot, 20)
+    forward = Move()
+    forward.setup(15, robot, 100, 100)
+    turn = Move()
+    turn.setup(15, robot, 0, 100)
+    avoid.add_children([too_close, turn])
+    root.add_children([avoid, forward])
+    return root
+
 # Ramppi
 # Suoraan -> Vasen 90 astetta
 # Suoraan -> Vasen 90 astetta
@@ -38,21 +51,9 @@ def _create_follow_tape_adjust_right_tree(robot):
     return adjust
 
 def create_track01_tree(robot):
-    root = py_trees.composites.Chooser("root")
+    root = py_trees.composites.Selector("root")
     adjust_left = _create_follow_tape_adjust_left_tree(robot)
     adjust_right = _create_follow_tape_adjust_right_tree(robot)
-    root.add_children([adjust_left, adjust_right])
-    return root
-
-def create_crash_avoider_tree(robot):
-    root = py_trees.composites.Selector("root")
-    avoid = py_trees.composites.Parallel("Avoid obstacle")
-    too_close = CloseEnough()
-    too_close.setup(15, robot, 20)
-    forward = Move()
-    forward.setup(15, robot, 100, 100)
-    turn = Move()
-    turn.setup(15, robot, 0, 100)
-    avoid.add_children([too_close, turn])
-    root.add_children([avoid, forward])
+    fallback = create_crash_avoider_tree(robot)
+    root.add_children([adjust_left, adjust_right, fallback])
     return root
