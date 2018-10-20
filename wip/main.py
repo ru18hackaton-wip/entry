@@ -11,3 +11,6 @@ def main():
     runner.set_tree(tree)
 
     runner.run()
+
+if __name__ == "__main__":
+    main()
