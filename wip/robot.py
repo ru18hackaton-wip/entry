@@ -1,6 +1,6 @@
 from ev3dev2.led import Leds
 from ev3dev2.motor import MoveTank, OUTPUT_A, OUTPUT_B
-from ev3dev2.sensor.lego import LightSensor, UltrasonicSensor
+from ev3dev2.sensor.lego import ColorSensor, UltrasonicSensor
 
 class Robot:
 
@@ -8,7 +8,7 @@ class Robot:
         self.leds = Leds()
         self.tank_drive = MoveTank(OUTPUT_A, OUTPUT_B)
         self.moving = False
-        self.light = LightSensor()
+        self.color = ColorSensor()
         self.ultra = UltrasonicSensor()
 
     def set_leds(self, color):
@@ -24,5 +24,5 @@ class Robot:
     def get_distance(self):
         return self.ultra.distance_centimeters
 
-    def get_color(self):
-        return self.light.reflected_light_intensity
+    def get_color_intensity(self):
+        return self.color.reflected_light_intensity
