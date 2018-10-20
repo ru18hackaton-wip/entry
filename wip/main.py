@@ -1,7 +1,7 @@
 from .robot import Robot
 from .runner import Runner
 
-from .tracks import create_track01_tree, create_crash_avoider_tree
+from .tracks import create_track01_tree
 
 def main():
     robot = Robot()
