@@ -1,3 +1,4 @@
+
 # Ramppi
 # Suoraan -> Vasen 90 astetta
 # Suoraan -> Vasen 90 astetta
@@ -14,3 +15,5 @@
 # Suoraan -> Oikea 90 astetta
 # Suoraan -> Vasen 90 astetta
 # Ramppi
+def create_track01_tree(robot):
+    return None
