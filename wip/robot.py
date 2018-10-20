@@ -17,6 +17,9 @@ class Robot:
     def move_forward(self, speed=100):
         self.tank_drive.on(speed,speed)
 
+    def turn_left(self, speed=100):
+        self.tank_drive.on(0,speed)
+
     def stop(self, brake=True):
         self.tank_drive.off(brake)
 

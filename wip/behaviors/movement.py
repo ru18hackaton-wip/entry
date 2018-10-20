@@ -20,3 +20,23 @@ class Forward(Behaviour):
 
     def terminate(self, new_status):
         self.robot.stop()
+
+class TurnLeft(Behaviour):
+
+    def __init__(self, name="TurnLeft"):
+        super(TurnLeft, self).__init__(name)
+
+    def setup(self, timeout, robot=None):
+        if robot:
+            self.robot = robot
+        return True
+
+    def initialise(self):
+        pass
+
+    def update(self):
+        self.robot.turn_left()
+        return Status.RUNNING
+
+    def terminate(self, new_status):
+        self.robot.stop()
