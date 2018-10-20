@@ -44,5 +44,5 @@ Motor.wait = dummy_wait
 
 def main_docker():
     clean_arena()
-    populate_arena([('large_motor', 0, 'outA'),('large_motor', 1, 'outB'),('ultrasonic_sensor', 0, 'in2')])
+    populate_arena([('large_motor', 0, 'outA'),('large_motor', 1, 'outB'),('ultrasonic_sensor', 0, 'in2'),('light_sensor', 1, 'in3')])
     main()
