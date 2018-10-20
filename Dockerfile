@@ -10,4 +10,4 @@ RUN pip3 install --trusted-host pypi.python.org -e .
 
 ENV PYTHONIOENCODING=utf8
 
-CMD run-robot
+CMD run-robot-docker

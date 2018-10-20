@@ -15,6 +15,7 @@ setup(
     entry_points={
         'console_scripts': [
             'run-robot=wip:main',
+            'run-robot-docker=wip.docker:main_docker',
         ],
     },
 )
