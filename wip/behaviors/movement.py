@@ -6,20 +6,19 @@ class Move(Behaviour):
     def __init__(self, name="Move"):
         super(Move, self).__init__(name)
 
-    def setup(self, timeout, robot=None, speed_left=None, speed_right=None):
+    def setup(self, timeout, robot=None, speeds=None):
         if robot:
             self.robot = robot
-        if speed_left is not None:
-            self.speed_left = speed_left
-        if speed_right is not None:
-            self.speed_right = speed_right
+        if speeds:
+            self.speeds = speeds
         return True
 
     def initialise(self):
         pass
 
     def update(self):
-        self.robot.move(self.speed_left,self.speed_right)
+        speed_left, speed_right = self.speeds
+        self.robot.move(speed_left, speed_right)
         return Status.RUNNING
 
     def terminate(self, new_status):

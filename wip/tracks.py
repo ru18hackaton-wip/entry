@@ -22,11 +22,11 @@ from .behaviors.follow_line import FollowLine
 # Ramppi
 def _create_follow_line_tree(robot):
     root = py_trees.composites.Selector("Follow line")
-    too_much_left = FollowLine("I see white, turn right")
-    too_much_left.setup(15, robot, "Black", [100,10], False)
+    always_left = Move("I see white, turn right")
+    always_left.setup(15, robot, [30, 5])
     too_much_right = FollowLine("I see black, turn left")
-    too_much_right.setup(15, robot, "Black", [10,100], True)
-    root.add_children([too_much_left, too_much_right])
+    too_much_right.setup(15, robot, "Black", [5,30])
+    root.add_children([too_much_right, always_left])
     return root
 
 def create_track01_tree(robot):
