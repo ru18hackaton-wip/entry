@@ -24,5 +24,5 @@ class Robot:
     def get_distance(self):
         return self.ultra.distance_centimeters
 
-    def get_color_intensity(self):
-        return self.color.reflected_light_intensity
+    def get_color(self):
+        return self.color
