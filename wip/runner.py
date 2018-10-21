@@ -3,6 +3,7 @@ import py_trees
 
 def draw_tree(tree):
     py_trees.display.print_ascii_tree(tree.root, show_status=True)
+    print(py_trees.blackboard.Blackboard())
 
 class Runner:
 

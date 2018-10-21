@@ -16,6 +16,7 @@ from ev3dev2.motor import \
     MoveTank, MoveSteering, MoveJoystick, \
     SpeedPercent, SpeedDPM, SpeedDPS, SpeedRPM, SpeedRPS, SpeedNativeUnits, \
     OUTPUT_A, OUTPUT_B
+from ev3dev2.sound import Sound
 
 ev3dev2.Device.DEVICE_ROOT_PATH = os.path.join(FAKE_SYS, 'arena')
 
@@ -41,6 +42,10 @@ def dummy_wait(self, cond, timeout=None):
     pass
 
 Motor.wait = dummy_wait
+
+def dummy_speak(self, text, play_type):
+    pass
+Sound.speak = dummy_speak
 
 def main_docker():
     clean_arena()

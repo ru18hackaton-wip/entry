@@ -30,4 +30,6 @@ def _create_follow_line_tree(robot):
     return root
 
 def create_track01_tree(robot):
-    return _create_follow_line_tree(robot)
+    track1 = _create_follow_line_tree(robot)
+    track1c = py_trees.idioms.oneshot("Track 1", "track1", track1)
+    return track1c
