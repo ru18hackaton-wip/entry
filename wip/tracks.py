@@ -1,5 +1,5 @@
 import py_trees
-from .behaviors.movement import Move
+from .behaviors.movement import Move, MoveUntilNewBiome
 from .behaviors.distance import CloseEnough
 from .behaviors.light import Color, ScanFloor
 from .behaviors.follow_line import FollowLine
@@ -9,7 +9,9 @@ def create_intro_tree(robot):
     scan = ScanFloor()
     scan.setup(0, robot=robot)
     scanner = py_trees.idioms.oneshot("Floor data", "floor_scanned", scan)
-    root.add_children([scanner])
+    move = MoveUntilNewBiome()
+    move.setup(0, robot=robot, speeds=[100,100])
+    root.add_children([scanner, move])
     return py_trees.idioms.oneshot("The Intro", "intro", root)
 
 # Ramppi
