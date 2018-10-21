@@ -4,6 +4,10 @@ from py_trees.blackboard import Blackboard
 
 from ..helpers import analyze_type
 
+# The Analyzer class takes Behaviour as a parameter
+# The class analyzes the environment when the color
+# of the surface changes
+
 class Analyzer(Behaviour):
 
     def __init__(self, name="Analyzer"):
@@ -14,11 +18,15 @@ class Analyzer(Behaviour):
             self.robot = robot
         return True
 
+    # Initializes the robot
+
     def initialise(self):
         self.turning = False
         self.color_original = None
         self.color_left = None
         self.color_right = None
+
+    # Analyzes the environment the robot is in when the environment changes
 
     def update(self):
         bb = Blackboard()
@@ -43,6 +51,10 @@ class Analyzer(Behaviour):
             return Status.RUNNING
         else:
             return Status.INVALID
+
+    # Updates the information of the new environment when
+    # analyzation is successful. If analyzation is unsuccessful
+    # does nothing
 
     def terminate(self, new_status):
         if new_status == Status.SUCCESS:

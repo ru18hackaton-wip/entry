@@ -18,6 +18,8 @@ from ev3dev2.motor import \
     OUTPUT_A, OUTPUT_B
 from ev3dev2.sound import Sound
 
+# Test environment related things
+
 ev3dev2.Device.DEVICE_ROOT_PATH = os.path.join(FAKE_SYS, 'arena')
 
 _internal_set_attribute = ev3dev2.Device._set_attribute

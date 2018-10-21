@@ -1,10 +1,14 @@
 from py_trees.behaviour import Behaviour
 from py_trees.common import Status
 
+# Class defines the Behaviour of following a line
+
 class FollowLine(Behaviour):
 
     def __init__(self, name="FollowLine"):
         super(FollowLine, self).__init__(name)
+
+    # Initializes the class
 
     def setup(self, timeout, robot=None, color=None, speeds=None):
         if robot:

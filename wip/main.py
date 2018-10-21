@@ -9,16 +9,22 @@ from .helpers import Biome
 
 import py_trees
 
+# Initializes robot
+
 def init():
     bb = py_trees.blackboard.Blackboard()
     bb.set("biome_check", False)
     bb.set("biome_type", Biome.FLOOR)
+
+# Creates welcome section
 
 def _create_welcome_section(robot):
     welcome = Welcome()
     welcome.setup(0,robot)
     wconce = py_trees.idioms.oneshot("Welcome once", "welcome", welcome)
     return wconce
+
+# Creates the tools tree
 
 def _create_tools_tree(robot):
     analyzer = Analyzer()
@@ -27,6 +33,9 @@ def _create_tools_tree(robot):
     tools = py_trees.composites.Selector(name="Tools")
     tools.add_children([analyzer])
     return tools
+
+# Main program initializes the behavior trees for the entire
+# program
 
 def main():
     init()

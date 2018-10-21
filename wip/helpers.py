@@ -7,11 +7,17 @@ class Biome(Enum):
     LINE_LEFT = 3
     LINE_RIGHT = 4
 
+# Checks if color1 and color2 are the same color
+
 def new_biome(color1, color2):
     return not same_biome(color1, color2)
 
+# Returns true if color1-color2 is smaller than 5
+
 def same_biome(color1, color2):
     return abs(color1-color2) < 5
+
+# Tells the robot what type of surface it is on
 
 def analyze_type(prev_type, original, left, right):
     if same_biome(left, right):

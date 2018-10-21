@@ -2,6 +2,8 @@ from py_trees.behaviour import Behaviour
 from py_trees.common import Status
 from py_trees.blackboard import Blackboard
 
+# Checks if the robot is on the line
+
 class Color(Behaviour):
 
     def __init__(self, name="Color"):
@@ -26,6 +28,8 @@ class Color(Behaviour):
     def terminate(self, new_status):
         pass
 
+# Scans the color of the floor
+
 class ScanFloor(Behaviour):
 
     def __init__(self, name="ScanFloor"):
@@ -38,6 +42,9 @@ class ScanFloor(Behaviour):
 
     def initialise(self):
         pass
+
+    # Reads and stores the color of the floor in the start phase
+    # of the robot
 
     def update(self):
         bb = Blackboard()
