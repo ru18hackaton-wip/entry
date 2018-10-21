@@ -56,4 +56,5 @@ class MoveUntilNewBiome(Behaviour):
 
     def terminate(self, new_status):
         if new_status == Status.SUCCESS:
+            self.bb.set("biome_check", True)
             self.robot.stop()
