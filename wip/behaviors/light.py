@@ -2,6 +2,8 @@ from py_trees.behaviour import Behaviour
 from py_trees.common import Status
 from py_trees.blackboard import Blackboard
 
+from ..helpers import same_biome
+
 # Checks if the robot is on the line
 
 class Color(Behaviour):
@@ -20,7 +22,7 @@ class Color(Behaviour):
         pass
 
     def update(self):
-        if self.target_color == self.robot.get_color().color_name:
+        if same_biome(self.target_color, self.robot.get_color().color_name):
             return Status.SUCCESS
         else:
             return Status.FAILURE

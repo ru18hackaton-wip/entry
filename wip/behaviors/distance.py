@@ -1,6 +1,8 @@
 from py_trees.behaviour import Behaviour
 from py_trees.common import Status
 
+# Behavior node that tells if something is close enough the robot
+
 class CloseEnough(Behaviour):
 
     def __init__(self, name="CloseEnough"):

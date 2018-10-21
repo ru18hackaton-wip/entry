@@ -1,6 +1,8 @@
 from py_trees.behaviour import Behaviour
 from py_trees.common import Status
 
+from ..helpers import same_biome
+
 # Class defines the Behaviour of following a line
 
 class FollowLine(Behaviour):
@@ -23,7 +25,7 @@ class FollowLine(Behaviour):
         pass
 
     def update(self):
-        if self.target_color == self.robot.get_color():
+        if same_biome(self.target_color, self.robot.get_color()):
             left, right = self.target_speeds
             self.robot.move(left,right)
             return Status.RUNNING

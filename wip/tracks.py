@@ -4,6 +4,8 @@ from .behaviors.distance import CloseEnough
 from .behaviors.light import Color, ScanFloor
 from .behaviors.follow_line import FollowLine
 
+# Create the behavior tree for intro part
+
 def create_intro_tree(robot):
     root = py_trees.composites.Sequence(name="Intro")
     scan = ScanFloor()
@@ -39,7 +41,9 @@ def _create_follow_line_tree(robot):
     root.add_children([too_much_right, always_left])
     return root
 
-def create_track01_tree(robot):
-    track1 = _create_follow_line_tree(robot)
-    track1c = py_trees.idioms.oneshot("Track 1", "track1", track1)
-    return track1c
+# Create the behavior tree for the maze
+
+def create_maze_tree(robot):
+    maze = _create_follow_line_tree(robot)
+    mazec = py_trees.idioms.oneshot("Maze", "maze", maze)
+    return mazec

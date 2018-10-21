@@ -1,6 +1,8 @@
 from py_trees.behaviour import Behaviour
 from py_trees.common import Status
 
+# Behavior that greets the audience
+
 class Welcome(Behaviour):
 
     def __init__(self, name="Welcome"):

@@ -1,7 +1,7 @@
 from .robot import Robot
 from .runner import Runner
 
-from .tracks import create_intro_tree, create_track01_tree
+from .tracks import create_intro_tree, create_maze_tree
 from .behaviors.greetings import Welcome
 from .behaviors.biome import Analyzer
 
@@ -42,19 +42,17 @@ def main():
     robot = Robot()
     runner = Runner(robot)
 
-    root = py_trees.composites.Selector(name="Main tree")
     tools = _create_tools_tree(robot)
 
-    behaviors = py_trees.composites.Sequence(name="WIP AI behaviors")
+    behaviors = py_trees.composites.Selector(name="WIP AI behaviors")
     welcome = _create_welcome_section(robot)
     intro = create_intro_tree(robot)
     tracks = py_trees.composites.Sequence(name="Tracks")
-    track1 = create_track01_tree(robot)
-    tracks.add_children([track1])
-    behaviors.add_children([welcome, intro, tracks])
+    maze = create_maze_tree(robot)
+    tracks.add_children([welcome, intro, maze])
+    behaviors.add_children([tools, tracks])
 
-    root.add_children([tools, behaviors])
-    runner.set_tree(root)
+    runner.set_tree(behaviors)
 
     runner.run()
 
