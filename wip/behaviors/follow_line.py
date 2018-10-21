@@ -19,7 +19,7 @@ class FollowLine(Behaviour):
         pass
 
     def update(self):
-        if self.target_color == self.robot.get_color().color_name:
+        if self.target_color == self.robot.get_color():
             left, right = self.target_speeds
             self.robot.move(left,right)
             return Status.RUNNING

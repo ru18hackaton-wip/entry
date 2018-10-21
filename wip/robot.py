@@ -27,7 +27,7 @@ class Robot:
         return self.ultra.distance_centimeters
 
     def get_color(self):
-        return self.color
+        return self.color.reflected_light_intensity
 
     def speak(self, say):
         self.sound.speak(text=say, play_type=Sound.PLAY_NO_WAIT_FOR_COMPLETE)

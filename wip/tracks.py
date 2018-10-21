@@ -1,8 +1,16 @@
 import py_trees
 from .behaviors.movement import Move
 from .behaviors.distance import CloseEnough
-from .behaviors.light import Color
+from .behaviors.light import Color, ScanFloor
 from .behaviors.follow_line import FollowLine
+
+def create_intro_tree(robot):
+    root = py_trees.composites.Sequence(name="Intro")
+    scan = ScanFloor()
+    scan.setup(0, robot=robot)
+    scanner = py_trees.idioms.oneshot("Floor data", "floor_scanned", scan)
+    root.add_children([scanner])
+    return py_trees.idioms.oneshot("The Intro", "intro", root)
 
 # Ramppi
 # Suoraan -> Vasen 90 astetta
